@@ -305,9 +305,9 @@ public class EvaluadorAvanzadoTests : IDisposable
 
         var servicio = CheatCodeService.DesdeArchivo(ruta);
 
-        Assert.True(servicio.Existe("MASTER-001"));
-        Assert.True(servicio.TieneIntentosDisponibles("MASTER-001"));
-        Assert.False(servicio.TieneIntentosDisponibles("AGOTADO-000"));
+        Assert.True(servicio.Existe("A1B2C3D4E5F6G7H8I9J0ABCDE"));
+        Assert.True(servicio.TieneIntentosDisponibles("Z9Y8X7W6V5U4T3S2R1Q0LMNOP"));
+        Assert.False(servicio.TieneIntentosDisponibles("00000000000000000AGOTADO0"));
         Assert.False(servicio.Existe("NO-EXISTE"));
     }
 }

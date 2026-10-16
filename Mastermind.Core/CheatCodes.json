@@ -1,7 +1,14 @@
-{
-  "cheatCodes": [
-    { "codigo": "MASTER-001", "intentosDisponibles": 3 },
-    { "codigo": "PISTA-777", "intentosDisponibles": 1 },
-    { "codigo": "AGOTADO-000", "intentosDisponibles": 0 }
-  ]
-}
+[
+  {
+    "hash": "A1B2C3D4E5F6G7H8I9J0ABCDE",
+    "usosDisponibles": 1
+  },
+  {
+    "hash": "Z9Y8X7W6V5U4T3S2R1Q0LMNOP",
+    "usosDisponibles": 3
+  },
+  {
+    "hash": "00000000000000000AGOTADO0",
+    "usosDisponibles": 0
+  }
+]

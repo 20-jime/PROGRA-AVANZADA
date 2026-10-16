@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace Mastermind.Core;
 
-public record CheatCodeInfo(string Codigo, int IntentosDisponibles);
+public record CheatCodeInfo(string Hash, int UsosDisponibles);
 
 /// <summary>
 /// Administra los cheat codes definidos en el archivo JSON y cuántas veces
@@ -17,21 +17,21 @@ public class CheatCodeService
     {
         var servicio = new CheatCodeService();
         foreach (var c in codigos)
-            servicio._disponibles[c.Codigo] = c.IntentosDisponibles;
+            servicio._disponibles[c.Hash] = c.UsosDisponibles;
         return servicio;
     }
 
     /// <summary>
-    /// Carga un JSON como:
-    /// { "cheatCodes": [ { "codigo": "MASTER-001", "intentosDisponibles": 3 } ] }
+    /// Carga un JSON como el del enunciado:
+    /// [ { "hash": "A1B2C3D4E5F6G7H8I9J0ABCDE", "usosDisponibles": 1 } ]
     /// </summary>
     public static CheatCodeService DesdeArchivo(string ruta)
     {
         var json = File.ReadAllText(ruta);
-        var datos = JsonSerializer.Deserialize<ArchivoCheats>(json,
+        var datos = JsonSerializer.Deserialize<List<CheatCodeInfo>>(json,
             new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-        return DesdeLista(datos?.CheatCodes ?? new List<CheatCodeInfo>());
+        return DesdeLista(datos ?? new List<CheatCodeInfo>());
     }
 
     public bool Existe(string codigo) => _disponibles.ContainsKey(codigo);
@@ -44,6 +44,4 @@ public class CheatCodeService
     public void Consumir(string codigo) => _usos[codigo] = UsosRealizados(codigo) + 1;
 
     public void ReiniciarSesion() => _usos.Clear();
-
-    private record ArchivoCheats(List<CheatCodeInfo>? CheatCodes);
 }
