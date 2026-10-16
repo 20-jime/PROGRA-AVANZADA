@@ -1,0 +1,7 @@
+{
+  "cheatCodes": [
+    { "codigo": "MASTER-001", "intentosDisponibles": 3 },
+    { "codigo": "PISTA-777", "intentosDisponibles": 1 },
+    { "codigo": "AGOTADO-000", "intentosDisponibles": 0 }
+  ]
+}
